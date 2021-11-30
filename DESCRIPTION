@@ -1,0 +1,9 @@
+Package: scs
+Type: Package
+Title: Social Contact Survey Project
+Version: 1.0
+Date: 2021-11-30
+Author: Group B
+Maintainer: Group B
+Description: Explorations, hypotheses, analysis, etc., for the social contact survey project
+License:
