@@ -3,15 +3,86 @@
 # Created by: greyhypotheses
 # Created on: 30/11/2021
 
+
+
+# The base plot area: mar = c(bottom, left, top, right)
+graphics::par(mar = c(6, 5, 2, 2) )
+
+
+
+# Custom/local external functions
 source(file = 'R/functions/SurveyData.R')
 source(file = 'R/functions/FrequenciesTable.R')
+source(file = 'R/functions/ExploreDayMethod.R')
+source(file = 'R/functions/ExploreAgeSex.R')
+source(file = 'R/functions/ExploreAgeMethod.R')
 
 
-# the inspected/prepared survey data
+
+# The inspected/prepared survey data
 survey <- SurveyData()
 
 
-# function FrequenciesTable() outlines the elements frequencies
+
+# The function FrequenciesTable() outlines the elements frequencies
 # of categorical/binary fields
 FrequenciesTable(field = survey$agegroup, fieldname = 'agegroup')
+FrequenciesTable(field = survey$occupation, fieldname = 'occupation')
+FrequenciesTable(field = survey$day_of_week, fieldname = 'day_of_week')
+
+FrequenciesTable(field = survey$sex, fieldname = 'sex')
 FrequenciesTable(field = survey$method, fieldname = 'method')
+
+
+
+# Graphs
+barplot(table(survey$agegroup), col = 'black', las = 2,
+        xlab = '\n', ylab = 'count\n', main = 'Age Groups')
+
+barplot(table(survey$occupation), col = 'black', las = 2,
+        xlab = '\n', ylab = 'count\n', main = 'Occupations')
+
+barplot(table(survey$day_of_week), col = 'black', las = 2,
+        xlab = '\n', ylab = 'count\n', main = 'Day of Week')
+
+
+# Age Group & Sex
+GraphAgeSex(survey = survey)
+
+# Day of Week & Survey Method
+GraphDayMethod(survey = survey)
+
+# Age Group & Method
+MixedGraphAgeMethod(survey = survey)
+SplitGraphAgeMethod(survey = survey)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
