@@ -73,11 +73,12 @@ SurveyData <- function () {
   frequencies(field = 'sex')
 
   # occupation
+  # it was stated during the lectures that ... in certain circumstances, and w.r.t. level definitions for
+  # modelling/analysis ...the elements of a categorical field should be arranged in descending frequency order
   T <- frequencies(field = 'occupation') %>%
-    dplyr::arrange(-frequency)
-  occupations <- unlist(T$occupation)
-  occupations <- occupations[!is.na(occupations)]
-  survey$occupation <- factor(x = survey$occupation, levels = occupations)
+    arrange(-frequency) %>%
+    filter(!is.na(occupation))
+  survey$occupation <- factor(x = survey$occupation, levels = unlist(T$occupation))
   frequencies(field = 'occupation')
 
   # unmatched_postcode
@@ -95,11 +96,23 @@ SurveyData <- function () {
 
   # age
   survey[survey$age < 0, 'age'] <- NA
-  frequencies(field = 'age')
   survey$agegroup <- cut_interval(x = survey$age, length = 5)
+
+  labelling <- frequencies(field = 'agegroup') %>%
+    arrange(-frequency) %>%
+    filter(!is.na(agegroup))
+  unlist(labelling$agegroup)
+
+  survey$agegroup <- factor(x = survey$agegroup, levels = unlist(labelling$agegroup))
   frequencies(field = 'agegroup')
 
+
   # household.size
+  survey[survey$household_size >= 6, 'household_size'] <- '6+'
+  survey$household_size <- factor(x = survey$household_size,
+         levels = c('2', '1', '3', '4', '5', '6+', '-1'),
+         labels = c('2', '1', '3', '4', '5', '6+', 'unknown'))
+  frequencies(field = 'household_size')
 
 
 }
