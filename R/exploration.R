@@ -16,6 +16,7 @@ source(file = 'R/functions/FrequenciesTable.R')
 source(file = 'R/functions/ExploreDayMethod.R')
 source(file = 'R/functions/ExploreAgeSex.R')
 source(file = 'R/functions/ExploreAgeMethod.R')
+source(file = 'R/functions/ExploreOccupationContacts.R')
 
 
 
@@ -56,10 +57,9 @@ GraphDayMethod(survey = survey)
 MixedGraphAgeMethod(survey = survey)
 SplitGraphAgeMethod(survey = survey)
 
-
-
-
-
+# Occupations & Contacts
+FrameOccupationContacts(survey = survey)
+GraphOccupationContacts(survey = survey)
 
 
 
