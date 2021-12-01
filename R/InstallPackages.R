@@ -6,7 +6,7 @@
 
 InstallPackages <- function (){
 
-  packages <- c('tidyverse', 'ggplot2', 'rmarkdown', 'latex2exp', 'equatiomatic')
+  packages <- c('tidyverse', 'roxygen2', 'lubridate', 'rmarkdown', 'latex2exp', 'equatiomatic')
 
   # Install
   .install <- function(x){
@@ -22,7 +22,14 @@ InstallPackages <- function (){
     library(x, character.only = TRUE)
     if (x == 'rmarkdown') {library(tinytex)}
   }
+
+  # Activating
   lapply(packages[!(packages %in% c('tidyverse', 'equatiomatic'))], .activate)
+
+  # Special Case
+  if ('tidyverse' %in% packages) {
+    lapply(X = c('magrittr', 'dplyr', 'tibble', 'ggplot2', 'stringr'), .activate)
+  }
 
   # Active libraries
   sessionInfo()
