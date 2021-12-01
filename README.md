@@ -1,4 +1,11 @@
 
+* [functions directory](./R/functions)
+* [the data preparation function](R/functions/SurveyData.R)
+* [a pdf with basic exploration outputs](exploration.pdf)
+
+<br>
+<br>
+
 ## scs
 
 CHIC601 Group Project: Social Contact Survey
