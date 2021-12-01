@@ -1,7 +1,8 @@
 
-* [functions directory](./R/functions)
+* [functions directory](R/functions)
 * [the data preparation function](R/functions/SurveyData.R)
 * [a pdf with basic exploration outputs](exploration.pdf)
+* [a script file for exploring/playing](R/exploration.R)
 
 <br>
 <br>
