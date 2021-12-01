@@ -15,7 +15,7 @@ GraphAgeSex <- function(survey) {
     geom_bar(mapping = aes(x = agegroup, fill = sex), alpha = 0.35, na.rm = TRUE) +
     theme_minimal() +
     theme(panel.grid.minor = element_blank(),
-          panel.grid.major = element_line(size = 0.15),
+          panel.grid.major = element_blank(),
           axis.text.x = element_text(size = 11, angle = 90),
           axis.text.y = element_text(size = 11),
           axis.title.x = element_text(size = 13),
