@@ -12,34 +12,29 @@ graphics::par(mar = c(6, 5, 2, 2) )
 # Custom/local external functions
 source(file = 'R/functions/SurveyData.R')
 source(file = 'R/mapping/AreaCodeMappings.R')
-source(file = 'R/functions/GeographicData.R')
-
-
-
+source(file = 'R/mapping/GetGeographicData.R')
 source(file = 'R/functions/FrequenciesTable.R')
 source(file = 'R/functions/ExploreDayMethod.R')
 source(file = 'R/functions/ExploreAgeSex.R')
 source(file = 'R/functions/ExploreAgeMethod.R')
 source(file = 'R/functions/ExploreOccupationContacts.R')
 
+# This snippet creates a geographic dictionary.  Study R/Gazetteer.R
+source(file = 'R/mapping/Gazetteer.R')
+Gazetteer()
+
+
 
 # The inspected/prepared survey data
 survey <- SurveyData()
 
 
-# A Gazetteer: This snippet will create a geographic
-# dictionary.  Study R/gazetteer.R
-source(file = 'R/gazetteer.R')
-
-
 # Geographic data, which can be merged with 'survey' via
 # the 'postcode' field.  This snippet depends on the
-# dictionary created by R/gazetteer.R
-geography <- survey %>%
-  select(postcode) %>%
-  unique() %>%
+# dictionary created by R/Gazetteer.R
+geography <- survey %>% select(postcode) %>% unique() %>%
   filter(!is.na(postcode)) %>%
-  GeographicData()
+  GetGeographicData()
 
 survey <- left_join(x = survey, y = geography[, c('postcode', 'ru11ind', 'ru11name')],
                     by = 'postcode')
@@ -66,7 +61,6 @@ barplot(table(survey$occupation), col = 'black', las = 2,
 
 barplot(table(survey$day_of_week), col = 'black', las = 2,
         xlab = '\n', ylab = 'count\n', main = 'Day of Week')
-
 
 # Age Group & Sex
 GraphAgeSex(survey = survey)
