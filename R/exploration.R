@@ -13,7 +13,7 @@ graphics::par(mar = c(6, 5, 2, 2) )
 # Custom/local external functions
 source(file = 'R/functions/SurveyData.R')
 source(file = 'R/mapping/AreaCodeMappings.R')
-source(file = 'R/functions/GetGeographicData.R')
+source(file = 'R/functions/GeographicData.R')
 source(file = 'R/functions/FrequenciesTable.R')
 source(file = 'R/functions/ExploreDayMethod.R')
 source(file = 'R/functions/ExploreAgeSex.R')
@@ -37,7 +37,7 @@ geography <- survey %>%
   select(postcode) %>%
   unique() %>%
   filter(!is.na(postcode)) %>%
-  GetGeographicData()
+  GeographicData()
 
 
 
