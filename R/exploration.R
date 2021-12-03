@@ -12,18 +12,25 @@ graphics::par(mar = c(6, 5, 2, 2) )
 
 # Custom/local external functions
 source(file = 'R/functions/SurveyData.R')
+source(file = 'R/functions/GetGeographicData.R')
 source(file = 'R/functions/FrequenciesTable.R')
 source(file = 'R/functions/ExploreDayMethod.R')
 source(file = 'R/functions/ExploreAgeSex.R')
 source(file = 'R/functions/ExploreAgeMethod.R')
 source(file = 'R/functions/ExploreOccupationContacts.R')
 
-source(file = 'R/functions/AreaCodeMapping.R')
-
-
 
 # The inspected/prepared survey data
 survey <- SurveyData()
+
+
+
+# Geographic data, which can be merged with 'survey' via the 'postcode' field
+geography <- survey %>%
+  select(postcode) %>%
+  unique() %>%
+  filter(!is.na(postcode)) %>%
+  GetGeographicData()
 
 
 
@@ -62,18 +69,5 @@ SplitGraphAgeMethod(survey = survey)
 # Occupations & Contacts
 FrameOccupationContacts(survey = survey)
 GraphOccupationContacts(survey = survey)
-
-
-supplement <- AreaCodeMapping(frame = survey[, c('id', 'postcode')])
-
-
-
-
-
-
-
-
-
-
 
 
