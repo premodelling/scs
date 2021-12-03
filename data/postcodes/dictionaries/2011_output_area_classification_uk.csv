@@ -1,4 +1,4 @@
-﻿OAC11,Supergroup,Group,Subgroup
+OAC11,Supergroup,Group,Subgroup
 1A1,Rural residents,Farming communities,Rural workers and families
 1A2,Rural residents,Farming communities,Established farming communities
 1A3,Rural residents,Farming communities,Agricultural communities
@@ -69,9 +69,9 @@
 8A2,Hard-pressed living,Industrious communities,Industrious hardship
 8B1,Hard-pressed living,Challenged terraced workers,Deprived blue-collar terraces
 8B2,Hard-pressed living,Challenged terraced workers,Hard pressed rented terraces
-8C1,Hard-pressed living,Hard pressed ageing workers,Ageing industrious workers
-8C2,Hard-pressed living,Hard pressed ageing workers,Ageing rural industry workers
-8C3,Hard-pressed living,Hard pressed ageing workers,Renting hard-pressed workers
+8C1,Hard-pressed living,Hard-pressed ageing workers,Ageing industrious workers
+8C2,Hard-pressed living,Hard-pressed ageing workers,Ageing rural industry workers
+8C3,Hard-pressed living,Hard-pressed ageing workers,Renting hard-pressed workers
 8D1,Hard-pressed living,Migration and churn,Young hard-pressed families
 8D2,Hard-pressed living,Migration and churn,Hard-pressed ethnic mix
 8D3,Hard-pressed living,Migration and churn,Hard-Pressed European Settlers
