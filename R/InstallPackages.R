@@ -6,7 +6,7 @@
 
 InstallPackages <- function (){
 
-  packages <- c('tidyverse', 'roxygen2', 'lubridate', 'rmarkdown', 'latex2exp', 'equatiomatic')
+  packages <- c('tidyverse', 'data.table', 'roxygen2', 'lubridate', 'rmarkdown', 'latex2exp', 'equatiomatic')
 
   # Install
   .install <- function(x){
