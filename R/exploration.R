@@ -4,7 +4,7 @@
 # Created on: 30/11/2021
 
 
-
+# This is used by R base plot:
 # The base plot area: mar = c(bottom, left, top, right)
 graphics::par(mar = c(6, 5, 2, 2) )
 
@@ -28,7 +28,7 @@ survey <- SurveyData()
 # Of interest
 # fields <- c('pcds', 'ctry', 'cty', 'ru11ind', 'oac11', 'lat', 'long')
 # colClasses <- c(pcd = 'character', ctry = 'character', cty = 'character',
-#                 ru11ind = 'character', oac11 = 'character', lat = 'numeric', long = 'numeric')
+#                  ru11ind = 'character', oac11 = 'character', lat = 'numeric', long = 'numeric')
 # AreaCodeMappings(fields = fields, colClasses = colClasses)
 
 
@@ -39,6 +39,9 @@ geography <- survey %>%
   unique() %>%
   filter(!is.na(postcode)) %>%
   GeographicData()
+
+survey <- left_join(x = survey, y = geography[, c('postcode', 'ru11ind', 'ru11name')],
+                    by = 'postcode')
 
 
 
