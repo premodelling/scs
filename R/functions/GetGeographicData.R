@@ -3,7 +3,7 @@
 # Created by: Think
 # Created on: 03/12/2021
 
-source(file = 'R/mapping/AreaCodeDescription.R')
+source(file = 'R/mapping/AreaCodeDescriptions.R')
 
 #' @param frame: A data frame of unique postcodes; field name 'postcode'
 #'
@@ -19,7 +19,7 @@ GetGeographicData <- function (frame) {
   mappings <- left_join(x = frame, y = geographicdata, by = 'postcode')
 
   # Enhance ...
-  descriptions <- AreaCodeDescription(mappings = mappings)
+  descriptions <- AreaCodeDescriptions(mappings = mappings)
 
   return(descriptions)
 
