@@ -12,6 +12,7 @@ graphics::par(mar = c(6, 5, 2, 2) )
 
 # Custom/local external functions
 source(file = 'R/functions/SurveyData.R')
+source(file = 'R/mapping/AreaCodeMappings.R')
 source(file = 'R/functions/GetGeographicData.R')
 source(file = 'R/functions/FrequenciesTable.R')
 source(file = 'R/functions/ExploreDayMethod.R')
@@ -23,6 +24,12 @@ source(file = 'R/functions/ExploreOccupationContacts.R')
 # The inspected/prepared survey data
 survey <- SurveyData()
 
+
+# Of interest
+# fields <- c('pcds', 'ctry', 'cty', 'ru11ind', 'oac11', 'lat', 'long')
+# colClasses <- c(pcd = 'character', ctry = 'character', cty = 'character',
+#                 ru11ind = 'character', oac11 = 'character', lat = 'numeric', long = 'numeric')
+# AreaCodeMappings(fields = fields, colClasses = colClasses)
 
 
 # Geographic data, which can be merged with 'survey' via the 'postcode' field
