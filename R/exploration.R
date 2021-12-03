@@ -32,6 +32,7 @@ survey <- SurveyData()
 # AreaCodeMappings(fields = fields, colClasses = colClasses)
 
 
+
 # Geographic data, which can be merged with 'survey' via the 'postcode' field
 geography <- survey %>%
   select(postcode) %>%
