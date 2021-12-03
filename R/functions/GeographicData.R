@@ -10,7 +10,7 @@ source(file = 'R/mapping/AreaCodeDescriptions.R')
 #' @return A data frame wherein each post code is associated with a number
 #'         of geographic Office for National Statistics (UK) Codes & Descriptions
 #'
-GetGeographicData <- function (frame) {
+GeographicData <- function (frame) {
 
   # Geographic Data
   geographicdata <- fread(file = 'warehouse/geographic.csv')
