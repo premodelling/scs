@@ -18,6 +18,8 @@ source(file = 'R/functions/ExploreAgeSex.R')
 source(file = 'R/functions/ExploreAgeMethod.R')
 source(file = 'R/functions/ExploreOccupationContacts.R')
 
+source(file = 'R/functions/AreaCodeMapping.R')
+
 
 
 # The inspected/prepared survey data
@@ -62,28 +64,7 @@ FrameOccupationContacts(survey = survey)
 GraphOccupationContacts(survey = survey)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+supplement <- AreaCodeMapping(frame = survey[, c('id', 'postcode')])
 
 
 
