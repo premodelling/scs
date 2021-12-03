@@ -4,7 +4,7 @@
 # Created on: 02/12/2021
 
 
-AreaCodeMapping <- function (fields, colClasses) {
+AreaCodeMappings <- function (fields, colClasses) {
 
   # The list post code directories
   listof <- list.files(path = 'data/postcodes/codes/', pattern = '*.csv', full.names = TRUE)
