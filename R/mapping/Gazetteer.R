@@ -11,7 +11,10 @@
 #
 # The data is saved in warehouse/geographic.csv
 #
-fields <- c('pcds', 'ru11ind', 'oac11', 'lat', 'long')
-colClasses <- c(pcd = 'character', ru11ind = 'character',
-                oac11 = 'character', lat = 'numeric', long = 'numeric')
-AreaCodeMappings(fields = fields, colClasses = colClasses)
+
+Gazetteer <- function () {
+  fields <- c('pcds', 'ru11ind', 'oac11', 'lat', 'long')
+  colClasses <- c(pcd = 'character', ru11ind = 'character',
+                  oac11 = 'character', lat = 'numeric', long = 'numeric')
+  AreaCodeMappings(fields = fields, colClasses = colClasses)
+}
