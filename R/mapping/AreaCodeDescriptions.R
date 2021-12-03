@@ -4,7 +4,7 @@
 # Created on: 03/12/2021
 
 
-AreaCodeDescription <- function (mappings) {
+AreaCodeDescriptions <- function (mappings) {
 
   # Output Area Classifications; Includes Rural & Urban Demarcations
   oac11 <- fread(file = 'data/postcodes/dictionaries/2011_output_area_classification_uk.csv',
