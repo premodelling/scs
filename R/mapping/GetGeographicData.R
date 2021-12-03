@@ -1,5 +1,5 @@
 # Title     : Get Geograaphic Data
-# Objective : Geographic data
+# Objective : Get Geographic Data
 # Created by: Think
 # Created on: 03/12/2021
 
@@ -10,7 +10,7 @@ source(file = 'R/mapping/AreaCodeDescriptions.R')
 #' @return A data frame wherein each post code is associated with a number
 #'         of geographic Office for National Statistics (UK) Codes & Descriptions
 #'
-GeographicData <- function (frame) {
+GetGeographicData <- function (frame) {
 
   # Geographic Data
   geographicdata <- fread(file = 'warehouse/geographic.csv')
