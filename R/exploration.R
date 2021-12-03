@@ -4,7 +4,6 @@
 # Created on: 30/11/2021
 
 
-# This is used by R base plot:
 # The base plot area: mar = c(bottom, left, top, right)
 graphics::par(mar = c(6, 5, 2, 2) )
 
@@ -14,6 +13,9 @@ graphics::par(mar = c(6, 5, 2, 2) )
 source(file = 'R/functions/SurveyData.R')
 source(file = 'R/mapping/AreaCodeMappings.R')
 source(file = 'R/functions/GeographicData.R')
+
+
+
 source(file = 'R/functions/FrequenciesTable.R')
 source(file = 'R/functions/ExploreDayMethod.R')
 source(file = 'R/functions/ExploreAgeSex.R')
@@ -25,15 +27,14 @@ source(file = 'R/functions/ExploreOccupationContacts.R')
 survey <- SurveyData()
 
 
-# Of interest
-# fields <- c('pcds', 'ctry', 'cty', 'ru11ind', 'oac11', 'lat', 'long')
-# colClasses <- c(pcd = 'character', ctry = 'character', cty = 'character',
-#                  ru11ind = 'character', oac11 = 'character', lat = 'numeric', long = 'numeric')
-# AreaCodeMappings(fields = fields, colClasses = colClasses)
+# A Gazetteer: This snippet will create a geographic
+# dictionary.  Study R/gazetteer.R
+source(file = 'R/gazetteer.R')
 
 
-
-# Geographic data, which can be merged with 'survey' via the 'postcode' field
+# Geographic data, which can be merged with 'survey' via
+# the 'postcode' field.  This snippet depends on the
+# dictionary created by R/gazetteer.R
 geography <- survey %>%
   select(postcode) %>%
   unique() %>%
