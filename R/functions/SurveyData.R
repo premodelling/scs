@@ -81,6 +81,7 @@ SurveyData <- function () {
   survey$agegroup <- cut_interval(x = survey$age, length = 5, right = FALSE)
 
   labelling <- FrequenciesTable(field = survey$agegroup, fieldname = 'agegroup') %>%
+    arrange(-frequency) %>%
     filter(!is.na(agegroup))
 
   survey$agegroup <- factor(x = survey$agegroup, levels = unlist(labelling$agegroup))
