@@ -13,10 +13,12 @@ source(file = 'R/mapping/AreaCodeDescriptions.R')
 GetGeographicData <- function (frame) {
 
   # Geographic Data
-  geographicdata <- fread(file = 'warehouse/geographic.csv')
+  # geographicdata <- fread(file = 'warehouse/geographic.csv')
+  # geographicdata <- read.csv(file = unz(description = 'warehouse/geographic.zip', filename = 'geographic.csv'))
+  geographicdata <- data.table::fread(cmd = 'unzip -cq warehouse/geographic.zip')
 
   # Mapping the postcodes in 'frame' to those in 'geographicdata'
-  mappings <- left_join(x = frame, y = geographicdata, by = 'postcode')
+  mappings <- dplyr::left_join(x = frame, y = geographicdata, by = 'postcode')
 
   # Enhance ...
   descriptions <- AreaCodeDescriptions(mappings = mappings)
