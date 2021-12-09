@@ -13,10 +13,10 @@ source(file = 'R/functions/SurveyData.R')
 source(file = 'R/mapping/AreaCodeMappings.R')
 source(file = 'R/mapping/GetGeographicData.R')
 source(file = 'R/functions/FrequenciesTable.R')
-source(file = 'R/functions/ExploreDayMethod.R')
-source(file = 'R/functions/ExploreAgeSex.R')
-source(file = 'R/functions/ExploreAgeMethod.R')
-source(file = 'R/functions/ExploreOccupationContacts.R')
+source(file = 'R/graphs/ExploreDayMethod.R')
+source(file = 'R/graphs/ExploreAgeSex.R')
+source(file = 'R/graphs/ExploreAgeMethod.R')
+source(file = 'R/graphs/ExploreOccupationContacts.R')
 
 
 # The inspected/prepared survey data
