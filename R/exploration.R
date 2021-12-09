@@ -39,7 +39,7 @@ geography <- survey %>%
   dplyr::filter(!is.na(postcode)) %>%
   GetGeographicData()
 
-survey <- left_join(x = survey, y = geography[, c('postcode', 'ru11ind', 'ru11name', 'lat', 'long')],
+survey <- left_join(x = survey, y = geography[, c('postcode', 'ru11ind', 'ru11name', 'lat', 'long', 'total_population')],
                     by = 'postcode')
 
 
@@ -53,6 +53,24 @@ FrequenciesTable(field = survey$day_of_week, fieldname = 'day_of_week')
 FrequenciesTable(field = survey$sex, fieldname = 'sex')
 FrequenciesTable(field = survey$method, fieldname = 'method')
 FrequenciesTable(field = survey$ru11name, fieldname = 'ru11name')
+
+
+
+# ratios
+census <- read.csv(file = 'data/census.csv')
+census$AgeGroup <- as.factor(census$AgeGroup)
+
+T <- table(survey$agegroup, survey$sex)
+quotients <- data.frame(female = T[, 'female'], male = T[, 'male'],
+                        unknown = T[, 'unknown'], agegroup = rownames(T))
+quotients <- quotients %>%
+  filter(female > 0 | male > 0)
+
+quotients <- left_join(x = quotients, y = census, by = c('agegroup' = 'AgeGroup'))
+
+quotients <- quotients %>%
+  mutate(reference_q <- Males/Females) %>%
+  mutate(sample_q <- male/female)
 
 
 
