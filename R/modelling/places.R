@@ -54,7 +54,6 @@ focus <- focus %>%
 
 
 
-
 # Modelling
 modelglmnb <- glm.nb(formula = total_contacts ~ agegroup + ru11ind + occupation + household_size + sex, data = focus)
 summary(modelglmnb)
@@ -68,7 +67,7 @@ modelglmnb <- glm.nb(formula = total_contacts ~ agegroup + ru11ind + occupation,
 summary(modelglmnb)
 plot(modelglmnb)
 
-modelglmnb <- glm.nb(formula = total_contacts ~ agegroup * ru11ind * occupation, data = focus)
+modelglmnb <- glm.nb(formula = total_contacts ~ agegroup + ru11ind + occupation + household_size + sex, data = focus)
 modelglmnbstep <- step(modelglmnb, trace = 0)
 summary(modelglmnbstep)
 plot(modelglmnbstep)
