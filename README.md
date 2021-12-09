@@ -15,8 +15,6 @@ CHIC601 Group Project: Social Contact Survey
 
 ### Presentation
 
-A plan?
-
 * Exploratory Data Analysis:
   * data preparation
   * relationships between variables
@@ -33,26 +31,6 @@ A plan?
 * Limitations & Bias: w.r.t
   * data collected
   * hypothesis investigation    
-
-<br>
-<br>
-
-### Discussion
-
-Subject to:
-
-* Using a representative sample of respondents based on population age-group & sex; additionally constrained 
-  by an *age-group intersection sex* cut-off due to survey data limitations.
-
-* A modelling approach that adjusts for all other variables.
-
-Possible hypothesis:
-
-1. total contacts is significantly dependent on occupation
-
-2. total contacts is significantly dependent on age group
-
-3. [or the intersection of 1 & 2]
 
 <br>
 <br>
