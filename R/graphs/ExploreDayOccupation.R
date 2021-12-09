@@ -1,6 +1,6 @@
 # Title     : Day of Week & Occupation
 # Objective : Day of Week & Occupation
-# Created by:
+# Created by: greyhypotheses
 # Created on: 01/12/2021
 
 GraphDayOccupation <- function (survey) {
