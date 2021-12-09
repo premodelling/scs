@@ -69,8 +69,25 @@ quotients <- quotients %>%
 quotients <- left_join(x = quotients, y = census, by = c('agegroup' = 'AgeGroup'))
 
 quotients <- quotients %>%
-  mutate(reference_q <- Males/Females) %>%
-  mutate(sample_q <- male/female)
+  mutate(UK = Males/Females) %>%
+  mutate(Sample = male/female)
+
+
+quotients %>%
+  dplyr::select(agegroup, UK, Sample) %>%
+  tidyr::gather(key = 'M/F Ratio', value = 'value', -agegroup) %>%
+  ggplot() +
+  geom_col(mapping = aes(x = agegroup, y = value, fill = `M/F Ratio`), position = 'dodge2') +
+  theme_minimal() +
+  theme(axis.text.x = element_text(size = 11, angle = 90),
+        axis.text.y = element_text(size = 11),
+        axis.title.x = element_text(face = 'bold', size = 13),
+        axis.title.y = element_text(face = 'bold', size = 13),
+        legend.title = element_text(),
+        panel.grid.minor = element_blank(), panel.grid.major = element_line(size = 0.15)) +
+  xlab('\nage group') +
+  ylab('ratio\n')
+
 
 
 
