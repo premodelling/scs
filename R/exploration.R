@@ -8,7 +8,6 @@
 graphics::par(mar = c(6, 5, 2, 2) )
 
 
-
 # Custom/local external functions
 source(file = 'R/functions/SurveyData.R')
 source(file = 'R/mapping/AreaCodeMappings.R')
@@ -18,7 +17,6 @@ source(file = 'R/functions/ExploreDayMethod.R')
 source(file = 'R/functions/ExploreAgeSex.R')
 source(file = 'R/functions/ExploreAgeMethod.R')
 source(file = 'R/functions/ExploreOccupationContacts.R')
-
 
 
 # The inspected/prepared survey data
@@ -39,9 +37,10 @@ geography <- survey %>%
   dplyr::filter(!is.na(postcode)) %>%
   GetGeographicData()
 
+
+# merge the survey & geography data
 survey <- left_join(x = survey, y = geography[, c('postcode', 'ru11ind', 'ru11name', 'lat', 'long', 'total_population')],
                     by = 'postcode')
-
 
 
 # The function FrequenciesTable() outlines the elements frequencies
@@ -55,42 +54,6 @@ FrequenciesTable(field = survey$method, fieldname = 'method')
 FrequenciesTable(field = survey$ru11name, fieldname = 'ru11name')
 
 
-
-# ratios
-census <- read.csv(file = 'data/census.csv')
-census$AgeGroup <- as.factor(census$AgeGroup)
-
-T <- table(survey$agegroup, survey$sex)
-quotients <- data.frame(female = T[, 'female'], male = T[, 'male'],
-                        unknown = T[, 'unknown'], agegroup = rownames(T))
-quotients <- quotients %>%
-  filter(female > 0 | male > 0)
-
-quotients <- left_join(x = quotients, y = census, by = c('agegroup' = 'AgeGroup'))
-
-quotients <- quotients %>%
-  mutate(UK = Males/Females) %>%
-  mutate(Sample = male/female)
-
-
-quotients %>%
-  dplyr::select(agegroup, UK, Sample) %>%
-  tidyr::gather(key = 'M/F Ratio', value = 'value', -agegroup) %>%
-  ggplot() +
-  geom_col(mapping = aes(x = agegroup, y = value, fill = `M/F Ratio`), position = 'dodge2') +
-  theme_minimal() +
-  theme(axis.text.x = element_text(size = 11, angle = 90),
-        axis.text.y = element_text(size = 11),
-        axis.title.x = element_text(face = 'bold', size = 13),
-        axis.title.y = element_text(face = 'bold', size = 13),
-        legend.title = element_text(),
-        panel.grid.minor = element_blank(), panel.grid.major = element_line(size = 0.15)) +
-  xlab('\nage group') +
-  ylab('ratio\n')
-
-
-
-
 # How many Scotland based records? Only 326 records are explicitly associated with
 # Scotland.  Hence instead of re-classifying the rural/urban categories, exclude
 # the records from rural/urban modelling & analysis
@@ -98,41 +61,19 @@ places <- FrequenciesTable(field = survey$ru11name, fieldname = 'ru11name')
 sum(places[12:19, 'frequency'])
 
 
-
-# Graphs
-ggplot(data = survey) +
-  geom_density(mapping = aes(x = total_contacts)) +
-  theme_minimal()
-
-ggplot(data = survey) +
-  geom_histogram(mapping = aes(x = total_contacts)) +
-  theme_minimal()
-
-barplot(table(survey$agegroup), col = 'black', las = 2,
-        xlab = '\n', ylab = 'count\n', main = 'Age Groups')
-
-barplot(table(survey$occupation), col = 'black', las = 2,
-        xlab = '\n', ylab = 'count\n', main = 'Occupations')
-
-barplot(table(survey$day_of_week), col = 'black', las = 2,
-        xlab = '\n', ylab = 'count\n', main = 'Day of Week')
-
-
-
-# Age Group & Sex
+# Graphs: Age Group & Sex
 GraphAgeSex(survey = survey)
 
-# Day of Week & Survey Method
+
+# Graphs: Day of Week & Survey Method
 GraphDayMethod(survey = survey)
 
-# Age Group & Method
+
+# Graphs: Age Group & Method
 MixedGraphAgeMethod(survey = survey)
 SplitGraphAgeMethod(survey = survey)
 
-# Occupations & Contacts
+
+# Graphs: Occupations & Contacts
 FrameOccupationContacts(survey = survey)
 GraphOccupationContacts(survey = survey)
-
-
-
-# power graph: proportion vs log scale
