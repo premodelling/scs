@@ -1,6 +1,6 @@
 # Title     : Explore Populations
 # Objective : UK & Sample Populations
-# Created by: Think
+# Created by: greyhypotheses
 # Created on: 09/12/2021
 
 ExplorePopulations <- function (survey) {
