@@ -1,6 +1,6 @@
 # Title     : Age Group & Occupation
 # Objective : Age Group & Occupation
-# Created by:
+# Created by: greyhypotheses
 # Created on: 01/12/2021
 
 GraphAgeOccupation <- function (survey) {
