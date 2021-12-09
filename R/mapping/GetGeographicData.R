@@ -23,6 +23,17 @@ GetGeographicData <- function (frame) {
   # Enhance ...
   descriptions <- AreaCodeDescriptions(mappings = mappings)
 
+
+  # number of people per postcodecensus; unfortunately incomplete
+  # https://www.nomisweb.co.uk/census/2011/postcode_headcounts_and_household_estimates
+  postcodecensus <- fread(file = 'data/postcode_census_estimate.csv')
+  names(postcodecensus) <- c('postcode', 'total_population', 'male_population',
+                             'female_population', 'occupied_households')
+  descriptions <- left_join(x = descriptions,
+                     y = postcodecensus[, c('postcode', 'total_population')],
+                     by = 'postcode')
+
+
   return(descriptions)
 
 }
