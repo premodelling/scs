@@ -32,6 +32,7 @@ variables <- c('total_contacts', 'age', 'agegroup', 'postcode', 'ru11ind', 'ru11
 focus <- survey[, variables]
 
 
+
 # focus on records that have a post code
 focus <- focus[!is.na(focus$postcode), ]
 
@@ -53,7 +54,21 @@ focus <- focus %>%
 
 
 
+
 # Modelling
 modelglmnb <- glm.nb(formula = total_contacts ~ agegroup + ru11ind + occupation + household_size + sex, data = focus)
 summary(modelglmnb)
 plot(modelglmnb)
+
+modelglmnb <- glm.nb(formula = total_contacts ~ agegroup + ru11ind + occupation + household_size, data = focus)
+summary(modelglmnb)
+plot(modelglmnb)
+
+modelglmnb <- glm.nb(formula = total_contacts ~ agegroup + ru11ind + occupation, data = focus)
+summary(modelglmnb)
+plot(modelglmnb)
+
+modelglmnb <- glm.nb(formula = total_contacts ~ agegroup * ru11ind * occupation, data = focus)
+modelglmnbstep <- step(modelglmnb, trace = 0)
+summary(modelglmnbstep)
+plot(modelglmnbstep)
