@@ -7,7 +7,7 @@
 FrameOccupationContacts <- function (survey) {
 
   survey %>%
-    select(occupation, total_contacts) %>%
+    dplyr::select(occupation, total_contacts) %>%
     group_by(occupation) %>%
     summarise(median = median(total_contacts),
               mean = mean(total_contacts),
