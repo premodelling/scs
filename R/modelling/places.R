@@ -45,6 +45,8 @@ any(focus$ru11ind %in% excl)
 
 
 # Sample for Sex, Age Group, Population
+census <- read.csv(file = 'data/census.csv')
+census$AgeGroup <- as.factor(census$AgeGroup)
 
 
 
