@@ -48,6 +48,9 @@ any(focus$ru11ind %in% excl)
 census <- read.csv(file = 'data/census.csv')
 census$AgeGroup <- as.factor(census$AgeGroup)
 
+focus <- focus %>%
+  filter(age >= 35)
+
 
 
 # Modelling
