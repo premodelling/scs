@@ -33,7 +33,7 @@ CoordinatesContacts <- function (focus) {
           axis.title.y = element_text(size = 13, face = 'bold'), axis.text.y = element_text(size = 11)) +
     xlab(label = '\nlongitude') +
     ylab(label = '\nlatitude\n') +
-    guides(col = guide_legend(title = 'Rural Urban Classification'),
+    guides(col = guide_legend(title = 'Total Contacts'),
            size = guide_legend(title = 'Total Contacts'))
 
 }
