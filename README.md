@@ -1,9 +1,4 @@
 
-* [functions directory](R/functions)
-* [the data preparation function](R/functions/SurveyData.R)
-* [a script file for exploring/playing](R/exploration.R)
-
-<br>
 <br>
 
 ## scs
