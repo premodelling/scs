@@ -119,3 +119,40 @@ knitr::kable(x = FrequenciesTable(field = survey$sex, fieldname = 'sex'),
 ```{r out.width = '55%', fig.align = 'center', fig.cap = 'Age group and sex'}
 GraphAgeSex(survey = survey)
 ```
+
+
+
+
+## Tests
+
+```{r}
+library(data.table)
+library(MASS)
+library(equatiomatic)
+```
+
+Data
+```{r}
+source(file = 'R/modelling/WithPlacesData.R')
+source(file = 'R/modelling/WithPlacesGraphs.R')
+
+# modelling & analysis data
+focus <- WithPlacesData()
+```
+
+
+Modelling
+```{r}
+
+
+modelglmnb <- glm.nb(formula = total_contacts ~ agegroup + ru11ind + occupation + household_size + sex, data = focus)
+modelglmnbstep <- step(modelglmnb, trace = 0)
+summary(modelglmnbstep)
+```
+
+And
+
+```{r echo = TRUE}
+equatiomatic::extract_eq(model = modelglmnbstep, wrap = TRUE)
+```
+
