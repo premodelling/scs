@@ -7,33 +7,19 @@
 source(file = 'R/modelling/WithPlacesData.R')
 source(file = 'R/modelling/WithPlacesGraphs.R')
 
+
+
 # modelling & analysis data
 focus <- WithPlacesData()
+
 
 
 # correlations
 # corrplot::corrplot(cor(focus[, c("lat", "long", "total_contacts", "age")]))
 
 
-# Sample for Sex, Age Group, Population
 
-
-
-# census data
-census <- read.csv(file = 'data/census.csv')
-census$AgeGroup <- as.factor(census$AgeGroup)
-
-T <- table(focus$agegroup, focus$sex)
-quotients <- data.frame(female = T[, 'female'], male = T[, 'male'],
-                        unknown = T[, 'unknown'], agegroup = rownames(T))
-quotients <- quotients %>%
-  filter(female > 0 | male > 0)
-
-quotients <- left_join(x = quotients, y = census, by = c('agegroup' = 'AgeGroup'))
-
-
-
-# dispersion: take note of rural village & rural village in sparse setting point
+# dispersion: take note of 'rural village' & 'rural village in sparse settings'
 CoordinatesContacts(focus = focus)
 CoordinatesContactsPlace(focus = focus)
 
