@@ -53,8 +53,10 @@ focus <- focus %>%
   filter(age >= 35)
 
 ggplot(data = focus, aes(x = long, y = lat, col = ru11name, size = total_contacts)) +
-  geom_point(alpha = 0.85) +
+  geom_point(alpha = 0.65) +
   coord_map() +
+  scale_colour_manual(values = c('red', 'blue', 'green', 'orange', 'tan',
+                                 'black', 'thistle', 'yellow', 'maroon', 'purple')) +
   theme_minimal() +
   theme(plot.caption = element_text(hjust = 0, size = 11, colour = 'darkgrey'),
         axis.title.x = element_text(size = 13, face = 'bold'), axis.text.x = element_text(size = 11),
