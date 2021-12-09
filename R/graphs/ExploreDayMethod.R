@@ -8,8 +8,8 @@ FrameDayMethod <- function(survey) {
 
   T <- table(survey$day_of_week, survey$method)
   spreads <- data.frame(postal = T[, 'postal'], online = T[, 'online']) %>%
-    mutate(postal_frac = as.numeric(postal / rowSums(select(., postal, online))),
-           online_frac = as.numeric(online / rowSums(select(., postal, online))),
+    mutate(postal_frac = as.numeric(postal / rowSums(dplyr::select(., postal, online))),
+           online_frac = as.numeric(online / rowSums(dplyr::select(., postal, online))),
            day_of_week = row.names(T))
   row.names(spreads) <- NULL
 
@@ -27,8 +27,8 @@ GraphDayMethod <- function(survey) {
   spreads <- FrameDayMethod(survey = survey)
 
   spreads %>%
-    select(postal_frac, online_frac, day_of_week) %>%
-    gather(key = 'method', value = 'fraction', -day_of_week) %>%
+    dplyr::select(postal_frac, online_frac, day_of_week) %>%
+    tidyr::gather(key = 'method', value = 'fraction', -day_of_week) %>%
     ggplot() +
     geom_col(mapping = aes(x = day_of_week, y = fraction, fill = method), alpha = 0.25,
              position = position_dodge2(preserve = 'single')) +
