@@ -10,7 +10,7 @@ GraphAgeContacts <- function (survey) {
                  show.legend = FALSE, notch = TRUE, notchwidth = 0.5, na.rm = TRUE) +
     ggplot2::coord_trans(y = 'log') +
     theme_minimal() +
-    theme(axis.text.x = element_text(size = 11, angle = 22.5),
+    theme(axis.text.x = element_text(size = 11, angle = 90),
           axis.text.y = element_text(face = "bold", size = 11),
           axis.title.y = element_text(size = 13),
           aspect.ratio = 1) +
@@ -18,3 +18,4 @@ GraphAgeContacts <- function (survey) {
     xlab(label = '')
 
 }
+
