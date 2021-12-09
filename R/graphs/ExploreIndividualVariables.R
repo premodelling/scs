@@ -1,6 +1,6 @@
 # Title     : Explore Contacts
 # Objective : Distribution of total contacts values
-# Created by: Think
+# Created by: greyhypotheses
 # Created on: 09/12/2021
 
 
@@ -16,17 +16,17 @@ TotalContactsHistogram <- function (survey) {
     theme_minimal()
 }
 
-AgeGroupBar <- function () {
+AgeGroupBar <- function (survey) {
   barplot(table(survey$agegroup), col = 'black', las = 2,
           xlab = '\n', ylab = 'count\n', main = 'Age Groups')
 }
 
-OccupationBar <- function () {
+OccupationBar <- function (survey) {
   barplot(table(survey$occupation), col = 'black', las = 2,
           xlab = '\n', ylab = 'count\n', main = 'Occupations')
 }
 
-DayOfWeekBar <- function () {
+DayOfWeekBar <- function (survey) {
   barplot(table(survey$day_of_week), col = 'black', las = 2,
           xlab = '\n', ylab = 'count\n', main = 'Day of Week')
 }
