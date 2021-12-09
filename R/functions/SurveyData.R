@@ -80,6 +80,9 @@ SurveyData <- function () {
   survey[survey$age < 0, 'age'] <- NA
   survey$agegroup <- cut_interval(x = survey$age, length = 5, right = FALSE)
 
+  levels(survey$agegroup)[levels(survey$agegroup) == '[90,95)'] <- '90+'
+  levels(survey$agegroup)[levels(survey$agegroup) == '[95,100]'] <- '90+'
+
   labelling <- FrequenciesTable(field = survey$agegroup, fieldname = 'agegroup') %>%
     arrange(-frequency) %>%
     filter(!is.na(agegroup))
