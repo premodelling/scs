@@ -1,6 +1,6 @@
-# Title     : TODO
-# Objective : TODO
-# Created by: Think
+# Title     : Age & Sex
+# Objective : Age & Sex
+# Created by: greyhypotheses
 # Created on: 01/12/2021
 
 FrameAgeSex <- function(survey) {
