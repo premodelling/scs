@@ -6,7 +6,7 @@
 ExplorePopulations <- function (survey) {
 
   # census data
-  census <- read.csv(file = 'data/census.csv')
+  census <- read.csv(file = '../../data/census.csv')
   census$AgeGroup <- as.factor(census$AgeGroup)
 
 
